@@ -13,7 +13,7 @@ GAME_COMPILE_COMMAND = ["go", "build"]
 
 # Find all files and match any directories that have "game" in them
 def find_all_game_paths(source):
-    
+
     game_paths = []
 
     # Walk recursively through source directory passed into os.walk()
@@ -57,13 +57,9 @@ def copy_and_overwrite(source, dest):
     shutil.copytree(source, dest)
 
 
-
 def make_json_metadata_file(path, game_dirs):
     # Data to be written to JSON file
-    data = {
-        "gameNames": game_dirs,
-        "numberOfGames": len(game_dirs)
-    }
+    data = {"gameNames": game_dirs, "numberOfGames": len(game_dirs)}
 
     with open(path, "w") as f:
         json.dump(data, f)
@@ -84,7 +80,7 @@ def compile_game_code(path):
     # Make sure that we did have a code file
     if code_file_name is None:
         return
-    
+
     # Otherwise, compile the file
     command = GAME_COMPILE_COMMAND + [code_file_name]
     run_command(command, path)
@@ -101,6 +97,7 @@ def run_command(command, path):
 
     # Change directory back to cwd we were in before we changed directories
     os.chdir(cwd)
+
 
 # Source is where we are looking, target is where we want to put our new directory
 def main(source, target):
@@ -147,6 +144,6 @@ if __name__ == "__main__":
     # $ Exception: You must pass a source and target directory - only.
     if len(args) != 3:
         raise Exception("You must pass a source and target directory - only.")
-    
+
     source, target = args[1:]
     main(source, target)
