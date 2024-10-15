@@ -7,10 +7,10 @@ install:
 #	python -m pytest -vv --cov=main --cov=mylib --cov=funcLog --cov=gcpFunc test_*.py
 
 format:	
-	black *.py data-manipulation/*.py ec2-auto-scaling/*.py
+	black *.py data-manipulation/*.py ec2-auto-scaling/*.py python-log-parser/*.py
 
 lint:
-	pylint --disable=R,C --ignore-patterns=test_.*?py *.py data-manipulation/*.py ec2-auto-scaling/*.py
+	pylint --disable=R,C --ignore-patterns=test_.*?py *.py data-manipulation/*.py ec2-auto-scaling/*.py python-log-parser/*.py
 
 #container-lint:
 #	docker run --rm -i hadolint/hadolint < Dockerfile
